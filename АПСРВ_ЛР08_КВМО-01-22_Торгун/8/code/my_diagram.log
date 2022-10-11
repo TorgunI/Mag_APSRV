@@ -1,0 +1,26 @@
+MinGW_DLL\compile.bat "C:\stuff\Hleb\8\my_diagram"
+
+C:\Program Files\SimInTech64\bin\CodeTemplates\MinGW_DLL>REM Установка путей для компилятора MinGW (GCC) 
+
+C:\Program Files\SimInTech64\bin\CodeTemplates\MinGW_DLL>del /q bin\*.* 
+C:\Program Files\SimInTech64\bin\CodeTemplates\MinGW_DLL\bin\example_cpp.dll
+Отказано в доступе.
+
+C:\Program Files\SimInTech64\bin\CodeTemplates\MinGW_DLL>REM Установка архитектуры сборки модуля в зависимости от разрядности загрузчика 
+
+C:\Program Files\SimInTech64\bin\CodeTemplates\MinGW_DLL>IF "64" == "64" (
+set path=..\..\..\mingw64\bin\  
+ gcc -shared -o bin\example_cpp.dll -m64 -s src\example.c src\example.def -Wl,--add-stdcall-alias -fpic -fpack-struct=1 -Wconversion 
+) 
+C:/Program Files/SimInTech64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/4.9.2/../../../../x86_64-w64-mingw32/bin/ld.exe: cannot open output file bin\example_cpp.dll: Permission denied
+collect2.exe: error: ld returned 1 exit status
+
+C:\Program Files\SimInTech64\bin\CodeTemplates\MinGW_DLL>IF "64" == "32" (
+set path=..\..\..\MinGW\bin\  
+ gcc -shared -o bin\example_cpp.dll -s src\example.c src\example.def -Wl,--add-stdcall-alias -fpic -fpack-struct=1 -Wconversion 
+) 
+
+C:\Program Files\SimInTech64\bin\CodeTemplates\MinGW_DLL>if 1 == 9009 (
+ 
+ start ..\..\..\doc\compilerswarn.htm 
+) 
